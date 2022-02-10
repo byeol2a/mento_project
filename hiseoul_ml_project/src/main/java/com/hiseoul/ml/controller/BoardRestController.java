@@ -32,7 +32,11 @@ public class BoardRestController{
 			Result result = boardService.retrieveBoardList();
 			return result;
 		}
-		
+		@GetMapping("/{boardno}")
+		public Result retrieveBoard(@PathVariable Integer boardno) {
+			Result result = boardService.retrieveBoard(boardno);
+		    return result;
+		}
 		@PostMapping
 		public Result createBoard(@ModelAttribute Board board) {
 			Result result = boardService.createBoard(board);
