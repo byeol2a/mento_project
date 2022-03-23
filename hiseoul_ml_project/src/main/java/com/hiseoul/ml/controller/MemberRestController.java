@@ -2,6 +2,7 @@ package com.hiseoul.ml.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,7 +16,6 @@ import com.hiseoul.ml.model.Member;
 import com.hiseoul.ml.model.Result;
 import com.hiseoul.ml.repositories.MemberRepository;
 import com.hiseoul.ml.service.MemberService;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @CrossOrigin(origins = "http://localhost:3000")

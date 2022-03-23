@@ -2,22 +2,18 @@ package com.hiseoul.ml.model;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
-@Table(name="tb_member")
 @Getter
 @Setter
 @ToString
-public class Member{
+public class MemberReUpdateDTO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer no;
@@ -32,6 +28,7 @@ public class Member{
 	private Integer permission;
 	private Integer auth;
 	
+		
 	public Integer getNo() {
 		return no;
 	}	
@@ -98,4 +95,21 @@ public class Member{
 	public void setAuth(Integer auth) {
 		this.auth = auth;
 	}	
+
+	@Override
+	public String toString() {
+		return "MemberReUpdateDTO{" +
+		           "no=" + no +
+		           ", id='" + id + '\'' +
+		           ", pass='" + pass + '\'' +
+		           ", name='" + name + '\'' +
+		           ", email='" + email + '\'' +
+		           ", instance_yn='" + instance_yn + '\'' +
+		           ", write_date='" + write_date + '\'' +
+		           ", update_date='" + update_date + '\'' +	    
+		           ", active_yn='" + active_yn + '\'' +
+		           ", permission='" + permission + '\'' + 	           
+		           ", auth='" + auth + '\'' +
+		           '}';
+	}
 }
