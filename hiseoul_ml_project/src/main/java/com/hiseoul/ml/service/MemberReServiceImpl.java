@@ -61,12 +61,31 @@ public class MemberReServiceImpl implements MemberReService{
 		return repository.save(newMemberRe).getNo();
 	}
 	
+	
+	
 	@Override
-	public MemberReQueryDTO updateMemberRe(Integer no, MemberReUpdateDTO memberReUpdateDTO){
+	public MemberReQueryDTO updateMemberAuth(Integer no, MemberReUpdateDTO memberReUpdateDTO){
 		if (repository.findById(no).isPresent()) {
 			MemberRe existingMemberRe = repository.findById(no).get();
 			
 			existingMemberRe.setAuth(memberReUpdateDTO.getAuth());
+			existingMemberRe.setUpdate(memberReUpdateDTO.getUpdate());
+			
+			MemberRe updatedMemberRe = repository.save(existingMemberRe);
+			
+			return new MemberReQueryDTO(updatedMemberRe.getNo(), updatedMemberRe.getId(), updatedMemberRe.getPass(),updatedMemberRe.getName(),updatedMemberRe.getEmail(),updatedMemberRe.getInstanceyn(),updatedMemberRe.getWritedate(),updatedMemberRe.getUpdate(),updatedMemberRe.getActiveyn(),updatedMemberRe.getPermission(),updatedMemberRe.getAuth());
+		}else {
+			return null;
+		}
+	}
+	
+	@Override
+	public MemberReQueryDTO updateMemberActive(Integer no, MemberReUpdateDTO memberReUpdateDTO){
+		if (repository.findById(no).isPresent()) {
+			MemberRe existingMemberRe = repository.findById(no).get();
+			
+			existingMemberRe.setActiveyn(memberReUpdateDTO.getActiveyn());
+			existingMemberRe.setUpdate(memberReUpdateDTO.getUpdate());
 			
 			MemberRe updatedMemberRe = repository.save(existingMemberRe);
 			

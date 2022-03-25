@@ -56,11 +56,16 @@ public class MemberReRestController{
 			return new ResponseEntity<>(memberReService.createMemberRe(memberReCreateDTO),HttpStatus.CREATED);
 		}
 		
-		@PutMapping(value = "/{no}", produces = MediaType.APPLICATION_JSON_VALUE)
+		@PutMapping(value = "/Auth/{no}", produces = MediaType.APPLICATION_JSON_VALUE)
 		@ResponseStatus(HttpStatus.OK)
-		public ResponseEntity<MemberReQueryDTO> updateMemberRe(@PathVariable(value = "no") Integer no, MemberReUpdateDTO memberReUpdateDTO){
-			return new ResponseEntity<>(memberReService.updateMemberRe(no, memberReUpdateDTO),HttpStatus.OK);
+		public ResponseEntity<MemberReQueryDTO> updateMemberAuth(@PathVariable(value = "no") Integer no, MemberReUpdateDTO memberReUpdateDTO){
+			return new ResponseEntity<>(memberReService.updateMemberAuth(no, memberReUpdateDTO),HttpStatus.OK);
 		}
 		
-		
+		@PutMapping(value = "/Active/{no}", produces = MediaType.APPLICATION_JSON_VALUE)
+		@ResponseStatus(HttpStatus.OK)
+		public ResponseEntity<MemberReQueryDTO> updateMemberActive(@PathVariable(value = "no") Integer no, MemberReUpdateDTO memberReUpdateDTO){
+			return new ResponseEntity<>(memberReService.updateMemberActive(no, memberReUpdateDTO),HttpStatus.OK);
+		}
+			
 }

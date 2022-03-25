@@ -12,5 +12,6 @@ public interface MemberReService {
 	public MemberReQueryDTO getMemberRe(int no);
 	public List<MemberReQueryDTO> listAllMemberRe();
 	public int createMemberRe(MemberReCreateDTO memberReCreateDTO);
-	public MemberReQueryDTO updateMemberRe(Integer no, MemberReUpdateDTO memberReUpdateDTO);
+	public MemberReQueryDTO updateMemberAuth(Integer no, MemberReUpdateDTO memberReUpdateDTO);
+	public MemberReQueryDTO updateMemberActive(Integer no, MemberReUpdateDTO memberReUpdateDTO);
 }
