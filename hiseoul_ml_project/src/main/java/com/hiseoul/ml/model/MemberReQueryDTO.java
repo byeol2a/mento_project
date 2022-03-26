@@ -7,10 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
-@ToString
 public class MemberReQueryDTO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

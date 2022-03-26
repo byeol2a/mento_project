@@ -8,11 +8,9 @@ import javax.persistence.Id;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 public class MemberReUpdateDTO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
