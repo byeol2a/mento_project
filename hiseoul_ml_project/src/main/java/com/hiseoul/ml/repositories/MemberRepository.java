@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.hiseoul.ml.model.Member;
 
 @Repository
-public interface MemberRepository extends JpaRepository<Member, Integer> {
-	public List<Member> findAllByOrderByNoDesc();
+public interface MemberRepository extends JpaRepository<Member, String> {
+	public List<Member> findByEmail(String email);
+	public List<Member> findAllByOrderByEmailDesc();
 }

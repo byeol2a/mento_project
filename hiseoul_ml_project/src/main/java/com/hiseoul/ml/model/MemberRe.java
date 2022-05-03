@@ -13,14 +13,13 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name="tb_member")
+@Table(name="tb_memberre")
 @Getter
 @Setter
 public class MemberRe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer no;
-	private String id;
 	private String pass;
 	private String name;
 	private String email;
@@ -30,6 +29,7 @@ public class MemberRe {
 	private String active_yn;
 	private Integer permission;
 	private Integer auth;
+	private String authkey;
 	
 		
 	public Integer getNo() {
@@ -38,12 +38,6 @@ public class MemberRe {
 	public void setNo(Integer no) {
 		this.no = no;
 	}	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getPass() {
 		return pass;
 	}
@@ -98,11 +92,16 @@ public class MemberRe {
 	public void setAuth(Integer auth) {
 		this.auth = auth;
 	}	
+	public String getAuthkey() {
+		return authkey;
+	}
+	public void setAuthkey(String authkey) {
+		this.authkey = authkey;
+	}
 	@Override
 	public String toString() {
 		return "MemberRe{" +
 	           "no=" + no +
-	           ", id='" + id + '\'' +
 	           ", pass='" + pass + '\'' +
 	           ", name='" + name + '\'' +
 	           ", email='" + email + '\'' +
@@ -112,6 +111,7 @@ public class MemberRe {
 	           ", active_yn='" + active_yn + '\'' +
 	           ", permission='" + permission + '\'' + 	           
 	           ", auth='" + auth + '\'' +
+	           ", authkey'" + authkey + '\'' +
 	           '}';
 	}
 }

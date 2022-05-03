@@ -13,7 +13,6 @@ public class MemberReQueryDTO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer no;
-	private String id;
 	private String pass;
 	private String name;
 	private String email;
@@ -23,10 +22,10 @@ public class MemberReQueryDTO {
 	private String active_yn;
 	private Integer permission;
 	private Integer auth;
+	private String authkey;
 	
-	public MemberReQueryDTO(Integer no, String id, String pass, String name, String email, String instance_yn, Timestamp write_date, Timestamp update_date, String active_yn, Integer permission, Integer auth) {
+	public MemberReQueryDTO(Integer no, String pass, String name, String email, String instance_yn, Timestamp write_date, Timestamp update_date, String active_yn, Integer permission, Integer auth, String authkey) {
 		this.no = no;
-		this.id = id;
 		this.pass = pass;
 		this.name = name;
 		this.email = email;
@@ -36,13 +35,11 @@ public class MemberReQueryDTO {
 		this.active_yn = active_yn;
 		this.permission = permission;
 		this.auth = auth;	
+		this.authkey = authkey;
 	}	
 	public Integer getNo() {
 		return no;
 	}	
-	public String getId() {
-		return id;
-	}
 	public String getPass() {
 		return pass;
 	}
@@ -74,7 +71,6 @@ public class MemberReQueryDTO {
 	public String toString() {
 		return "MemberReQueryDTO{" +
 	           "no=" + no +
-	           ", id='" + id + '\'' +
 	           ", pass='" + pass + '\'' +
 	           ", name='" + name + '\'' +
 	           ", email='" + email + '\'' +
@@ -84,6 +80,13 @@ public class MemberReQueryDTO {
 	           ", active_yn='" + active_yn + '\'' +
 	           ", permission='" + permission + '\'' + 	           
 	           ", auth='" + auth + '\'' +
+	           ", authkey='" + authkey + '\'' +
 	           '}';
+	}
+	public String getAuthkey() {
+		return authkey;
+	}
+	public void setAuthkey(String authkey) {
+		this.authkey = authkey;
 	}
 }

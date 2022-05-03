@@ -17,7 +17,7 @@ import com.hiseoul.ml.repositories.MenuCateRepository;
 import com.hiseoul.ml.service.MenuCateService;
 
 @RestController
-@RequestMapping(value="restapi/menucate")
+@RequestMapping(value="Yolo/menucate")
 public class MenuCateRestController{
 	private static final org.apache.logging.log4j.Logger
 	logger = LogManager.getLogger(MenuCateRestController.class);

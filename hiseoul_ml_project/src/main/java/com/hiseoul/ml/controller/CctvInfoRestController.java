@@ -17,7 +17,7 @@ import com.hiseoul.ml.repositories.CctvInfoRepository;
 import com.hiseoul.ml.service.CctvInfoService;
 
 @RestController
-@RequestMapping(value="restapi/cctvinfo")
+@RequestMapping(value="Yolo/cctvinfo")
 public class CctvInfoRestController{
 	private static final org.apache.logging.log4j.Logger
 	logger = LogManager.getLogger(CctvInfoRestController.class);

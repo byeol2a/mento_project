@@ -19,7 +19,7 @@ import com.hiseoul.ml.repositories.BoardRepository;
 
 
 @RestController
-@RequestMapping(value = "restapi/board")
+@RequestMapping(value = "Yolo/board")
 public class BoardRestController {
 	private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(BoardRestController.class);
 	@Autowired

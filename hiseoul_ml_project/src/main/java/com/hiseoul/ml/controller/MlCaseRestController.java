@@ -21,7 +21,7 @@ import com.hiseoul.ml.repositories.MlCaseRepository;
 import com.hiseoul.ml.service.MlCaseService;
 
 @RestController
-@RequestMapping(value="restapi/mlcase")
+@RequestMapping(value="Yolo/mlcase")
 public class MlCaseRestController{
 	private static final org.apache.logging.log4j.Logger
 	logger = LogManager.getLogger(MlCaseRestController.class);

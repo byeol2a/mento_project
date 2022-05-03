@@ -17,7 +17,7 @@ import com.hiseoul.ml.repositories.BizModelRepository;
 import com.hiseoul.ml.service.BizModelService;
 
 @RestController
-@RequestMapping(value="restapi/bizmodel")
+@RequestMapping(value="Yolo/bizmodel")
 public class BizModelRestController{
 	private static final org.apache.logging.log4j.Logger
 	logger = LogManager.getLogger(BizModelRestController.class);

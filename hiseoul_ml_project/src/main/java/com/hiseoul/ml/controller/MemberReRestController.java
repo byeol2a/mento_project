@@ -30,7 +30,7 @@ import com.hiseoul.ml.service.MemberService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping(value="restapi/memberre")
+@RequestMapping(value="Yolo/memberre")
 public class MemberReRestController{
 	private static final org.apache.logging.log4j.Logger
 	logger = LogManager.getLogger(MemberReRestController.class);
@@ -44,28 +44,39 @@ public class MemberReRestController{
 			return new ResponseEntity<>(memberReService.listAllMemberRe(), HttpStatus.OK);
 		}
 
-		@GetMapping(value = "/{no}", produces = MediaType.APPLICATION_JSON_VALUE)
+		@GetMapping(value = "/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
 		@ResponseStatus(HttpStatus.OK)
-		public ResponseEntity<MemberReQueryDTO> getMemberRe(@PathVariable(value = "no") Integer no) {
-			return new ResponseEntity<>(memberReService.getMemberRe(no), HttpStatus.OK);
+		public ResponseEntity<MemberReQueryDTO> getMemberRe(@PathVariable(value = "email") String email) {
+			return new ResponseEntity<>(memberReService.getMemberRe(email), HttpStatus.OK);
 		}
 		
 		@PostMapping
 		@ResponseStatus(HttpStatus.CREATED)
-		public ResponseEntity<Integer> createMemberRe(MemberReCreateDTO memberReCreateDTO){
+		public ResponseEntity<String> createMemberRe(MemberReCreateDTO memberReCreateDTO){
 			return new ResponseEntity<>(memberReService.createMemberRe(memberReCreateDTO),HttpStatus.CREATED);
 		}
 		
-		@PutMapping(value = "/Auth/{no}", produces = MediaType.APPLICATION_JSON_VALUE)
+		@PutMapping(value = "/Auth/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
 		@ResponseStatus(HttpStatus.OK)
-		public ResponseEntity<MemberReQueryDTO> updateMemberAuth(@PathVariable(value = "no") Integer no, MemberReUpdateDTO memberReUpdateDTO){
-			return new ResponseEntity<>(memberReService.updateMemberAuth(no, memberReUpdateDTO),HttpStatus.OK);
+		public ResponseEntity<MemberReQueryDTO> updateMemberAuth(@PathVariable(value = "email") String email, MemberReUpdateDTO memberReUpdateDTO){
+			return new ResponseEntity<>(memberReService.updateMemberAuth(email, memberReUpdateDTO),HttpStatus.OK);
 		}
 		
-		@PutMapping(value = "/Active/{no}", produces = MediaType.APPLICATION_JSON_VALUE)
+		@PutMapping(value = "/Active/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
 		@ResponseStatus(HttpStatus.OK)
-		public ResponseEntity<MemberReQueryDTO> updateMemberActive(@PathVariable(value = "no") Integer no, MemberReUpdateDTO memberReUpdateDTO){
-			return new ResponseEntity<>(memberReService.updateMemberActive(no, memberReUpdateDTO),HttpStatus.OK);
+		public ResponseEntity<MemberReQueryDTO> updateMemberActive(@PathVariable(value = "email") String email, MemberReUpdateDTO memberReUpdateDTO){
+			return new ResponseEntity<>(memberReService.updateMemberActive(email, memberReUpdateDTO),HttpStatus.OK);
 		}
-			
+		
+		@PutMapping(value = "/Account/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
+		@ResponseStatus(HttpStatus.OK)
+		public ResponseEntity<MemberReQueryDTO> updateMemberAccount(@PathVariable(value = "email") String email, MemberReUpdateDTO memberReUpdateDTO){
+			return new ResponseEntity<>(memberReService.updateMemberAccount(email, memberReUpdateDTO),HttpStatus.OK);
+		}
+
+		@PutMapping(value = "joinConfirm", produces = MediaType.APPLICATION_JSON_VALUE)
+		@ResponseStatus(HttpStatus.OK)
+		public ResponseEntity<MemberReQueryDTO> emailConfirm(@PathVariable(value = "email") String email, MemberReUpdateDTO memberReUpdateDTO){
+			return new ResponseEntity<>(memberReService.emailConfirm(email, memberReUpdateDTO),HttpStatus.OK);
+		}
 }

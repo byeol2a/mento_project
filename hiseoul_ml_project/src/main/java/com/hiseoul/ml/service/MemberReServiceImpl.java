@@ -24,10 +24,10 @@ public class MemberReServiceImpl implements MemberReService{
 	@Autowired
 	MemberReRepository repository;
 	
-	public MemberReQueryDTO getMemberRe(int no) {
-		if (repository.findById(no).isPresent()) {
-			MemberRe fetchedMemberRe = repository.findById(no).get();
-			return new MemberReQueryDTO(fetchedMemberRe.getNo(),fetchedMemberRe.getId(),fetchedMemberRe.getPass(),fetchedMemberRe.getName(),fetchedMemberRe.getEmail(),fetchedMemberRe.getInstanceyn(),fetchedMemberRe.getWritedate(),fetchedMemberRe.getUpdate(),fetchedMemberRe.getActiveyn(), fetchedMemberRe.getPermission(),fetchedMemberRe.getAuth()); 
+	public MemberReQueryDTO getMemberRe(String email) {
+		if (repository.findByEmail(email) != null) {
+			MemberRe fetchedMemberRe = repository.findByEmail(email);
+			return new MemberReQueryDTO(fetchedMemberRe.getNo(),fetchedMemberRe.getPass(),fetchedMemberRe.getName(),fetchedMemberRe.getEmail(),fetchedMemberRe.getInstanceyn(),fetchedMemberRe.getWritedate(),fetchedMemberRe.getUpdate(),fetchedMemberRe.getActiveyn(), fetchedMemberRe.getPermission(),fetchedMemberRe.getAuth(), fetchedMemberRe.getAuthkey()); 
 		}else {
 			return null;
 		}
@@ -37,17 +37,16 @@ public class MemberReServiceImpl implements MemberReService{
 		List<MemberReQueryDTO> memberReList = new ArrayList<>();
 		
 		repository.findAll().forEach(memberre -> {
-			memberReList.add(new MemberReQueryDTO(memberre.getNo(),memberre.getId(),memberre.getPass(),memberre.getName(),memberre.getEmail(),memberre.getInstanceyn(),memberre.getWritedate(),memberre.getUpdate(),memberre.getActiveyn(), memberre.getPermission(),memberre.getAuth()));
+			memberReList.add(new MemberReQueryDTO(memberre.getNo(),memberre.getPass(),memberre.getName(),memberre.getEmail(),memberre.getInstanceyn(),memberre.getWritedate(),memberre.getUpdate(),memberre.getActiveyn(), memberre.getPermission(),memberre.getAuth(), memberre.getAuthkey()));
 		});
 		
 		return memberReList;	
 	}
 	
-	public int createMemberRe(MemberReCreateDTO memberReCreateDTO) {
+	public String createMemberRe(MemberReCreateDTO memberReCreateDTO) {
 		MemberRe newMemberRe = new MemberRe();
 		
 		newMemberRe.setNo(memberReCreateDTO.getNo());
-		newMemberRe.setId(memberReCreateDTO.getId());
 		newMemberRe.setPass(memberReCreateDTO.getPass());
 		newMemberRe.setName(memberReCreateDTO.getName());
 		newMemberRe.setEmail(memberReCreateDTO.getEmail());
@@ -57,39 +56,73 @@ public class MemberReServiceImpl implements MemberReService{
 		newMemberRe.setActiveyn(memberReCreateDTO.getActiveyn());
 		newMemberRe.setPermission(memberReCreateDTO.getPermission());
 		newMemberRe.setAuth(memberReCreateDTO.getAuth());
+		newMemberRe.setAuthkey(memberReCreateDTO.getAuthkey());
 		
-		return repository.save(newMemberRe).getNo();
+		return repository.save(newMemberRe).getEmail();
 	}
 	
 	
 	
 	@Override
-	public MemberReQueryDTO updateMemberAuth(Integer no, MemberReUpdateDTO memberReUpdateDTO){
-		if (repository.findById(no).isPresent()) {
-			MemberRe existingMemberRe = repository.findById(no).get();
+	public MemberReQueryDTO updateMemberAuth(String email, MemberReUpdateDTO memberReUpdateDTO){
+		if (repository.findByEmail(email) != null) {
+			MemberRe existingMemberRe = repository.findByEmail(email);
 			
 			existingMemberRe.setAuth(memberReUpdateDTO.getAuth());
 			existingMemberRe.setUpdate(memberReUpdateDTO.getUpdate());
 			
 			MemberRe updatedMemberRe = repository.save(existingMemberRe);
 			
-			return new MemberReQueryDTO(updatedMemberRe.getNo(), updatedMemberRe.getId(), updatedMemberRe.getPass(),updatedMemberRe.getName(),updatedMemberRe.getEmail(),updatedMemberRe.getInstanceyn(),updatedMemberRe.getWritedate(),updatedMemberRe.getUpdate(),updatedMemberRe.getActiveyn(),updatedMemberRe.getPermission(),updatedMemberRe.getAuth());
+			return new MemberReQueryDTO(updatedMemberRe.getNo(), updatedMemberRe.getPass(),updatedMemberRe.getName(),updatedMemberRe.getEmail(),updatedMemberRe.getInstanceyn(),updatedMemberRe.getWritedate(),updatedMemberRe.getUpdate(),updatedMemberRe.getActiveyn(),updatedMemberRe.getPermission(),updatedMemberRe.getAuth(), updatedMemberRe.getAuthkey());
 		}else {
 			return null;
 		}
 	}
 	
 	@Override
-	public MemberReQueryDTO updateMemberActive(Integer no, MemberReUpdateDTO memberReUpdateDTO){
-		if (repository.findById(no).isPresent()) {
-			MemberRe existingMemberRe = repository.findById(no).get();
+	public MemberReQueryDTO updateMemberActive(String email, MemberReUpdateDTO memberReUpdateDTO){
+		if (repository.findByEmail(email) != null) {
+			MemberRe existingMemberRe = repository.findByEmail(email);
 			
 			existingMemberRe.setActiveyn(memberReUpdateDTO.getActiveyn());
 			existingMemberRe.setUpdate(memberReUpdateDTO.getUpdate());
 			
 			MemberRe updatedMemberRe = repository.save(existingMemberRe);
 			
-			return new MemberReQueryDTO(updatedMemberRe.getNo(), updatedMemberRe.getId(), updatedMemberRe.getPass(),updatedMemberRe.getName(),updatedMemberRe.getEmail(),updatedMemberRe.getInstanceyn(),updatedMemberRe.getWritedate(),updatedMemberRe.getUpdate(),updatedMemberRe.getActiveyn(),updatedMemberRe.getPermission(),updatedMemberRe.getAuth());
+			return new MemberReQueryDTO(updatedMemberRe.getNo(), updatedMemberRe.getPass(),updatedMemberRe.getName(),updatedMemberRe.getEmail(),updatedMemberRe.getInstanceyn(),updatedMemberRe.getWritedate(),updatedMemberRe.getUpdate(),updatedMemberRe.getActiveyn(),updatedMemberRe.getPermission(),updatedMemberRe.getAuth(), updatedMemberRe.getAuthkey());
+		}else {
+			return null;
+		}
+	}
+	
+	@Override
+	public MemberReQueryDTO updateMemberAccount(String email, MemberReUpdateDTO memberReUpdateDTO){
+		if (repository.findByEmail(email) != null) {
+			MemberRe existingMemberRe = repository.findByEmail(email);
+			
+			existingMemberRe.setName(memberReUpdateDTO.getName());
+			existingMemberRe.setPass(memberReUpdateDTO.getPass());
+			existingMemberRe.setUpdate(memberReUpdateDTO.getUpdate());
+			
+			MemberRe updatedMemberRe = repository.save(existingMemberRe);
+			
+			return new MemberReQueryDTO(updatedMemberRe.getNo(), updatedMemberRe.getPass(),updatedMemberRe.getName(),updatedMemberRe.getEmail(),updatedMemberRe.getInstanceyn(),updatedMemberRe.getWritedate(),updatedMemberRe.getUpdate(),updatedMemberRe.getActiveyn(),updatedMemberRe.getPermission(),updatedMemberRe.getAuth(), updatedMemberRe.getAuthkey());
+		}else {
+			return null;
+		}
+	}
+
+	@Override
+	public MemberReQueryDTO emailConfirm(String email, MemberReUpdateDTO memberReUpdateDTO){
+		if (repository.findByEmail(email) != null) {
+			MemberRe existingMemberRe = repository.findByEmail(email);
+			
+			existingMemberRe.setAuth(0);
+			existingMemberRe.setUpdate(memberReUpdateDTO.getUpdate());
+			
+			MemberRe updatedMemberRe = repository.save(existingMemberRe);
+			
+			return new MemberReQueryDTO(updatedMemberRe.getNo(), updatedMemberRe.getPass(),updatedMemberRe.getName(),updatedMemberRe.getEmail(),updatedMemberRe.getInstanceyn(),updatedMemberRe.getWritedate(),updatedMemberRe.getUpdate(),updatedMemberRe.getActiveyn(),updatedMemberRe.getPermission(),updatedMemberRe.getAuth(),updatedMemberRe.getAuthkey());
 		}else {
 			return null;
 		}

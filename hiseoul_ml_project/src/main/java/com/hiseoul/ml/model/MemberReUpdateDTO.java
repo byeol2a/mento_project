@@ -15,7 +15,6 @@ public class MemberReUpdateDTO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer no;
-	private String id;
 	private String pass;
 	private String name;
 	private String email;
@@ -25,6 +24,7 @@ public class MemberReUpdateDTO {
 	private String active_yn;
 	private Integer permission;
 	private Integer auth;
+	private String authkey; //
 	
 		
 	public Integer getNo() {
@@ -33,12 +33,6 @@ public class MemberReUpdateDTO {
 	public void setNo(Integer no) {
 		this.no = no;
 	}	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getPass() {
 		return pass;
 	}
@@ -98,7 +92,6 @@ public class MemberReUpdateDTO {
 	public String toString() {
 		return "MemberReUpdateDTO{" +
 		           "no=" + no +
-		           ", id='" + id + '\'' +
 		           ", pass='" + pass + '\'' +
 		           ", name='" + name + '\'' +
 		           ", email='" + email + '\'' +
@@ -108,6 +101,13 @@ public class MemberReUpdateDTO {
 		           ", active_yn='" + active_yn + '\'' +
 		           ", permission='" + permission + '\'' + 	           
 		           ", auth='" + auth + '\'' +
+		           ", authkey='" + authkey + '\'' +
 		           '}';
+	}
+	public String getAuthkey() {
+		return authkey;
+	}
+	public void setAuthkey(String authkey) {
+		this.authkey = authkey;
 	}
 }

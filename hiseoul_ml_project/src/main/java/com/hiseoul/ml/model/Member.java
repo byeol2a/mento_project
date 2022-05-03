@@ -31,6 +31,7 @@ public class Member{
 	private String active_yn;
 	private Integer permission;
 	private Integer auth;
+	private String authkey;
 	
 	public Integer getNo() {
 		return no;
@@ -97,5 +98,11 @@ public class Member{
 	}	
 	public void setAuth(Integer auth) {
 		this.auth = auth;
+	}
+	public String getAuthkey() {
+		return authkey;
+	}
+	public void setAuthkey(String authkey) {
+		this.authkey = authkey;
 	}	
 }

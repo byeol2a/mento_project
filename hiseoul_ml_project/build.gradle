@@ -24,10 +24,18 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	
+	implementation 'org.springframework:spring-context-support:5.2.0.RELEASE'
+	
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.5.4'
+	
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+bootWar{
+	archiveName("TFM_WEB.war")
 }
 
 tasks.named('test') {

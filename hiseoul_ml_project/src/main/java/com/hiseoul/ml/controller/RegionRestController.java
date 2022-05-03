@@ -17,7 +17,7 @@ import com.hiseoul.ml.repositories.RegionRepository;
 import com.hiseoul.ml.service.RegionService;
 
 @RestController
-@RequestMapping(value="restapi/region")
+@RequestMapping(value="Yolo/region")
 public class RegionRestController{
 	private static final org.apache.logging.log4j.Logger
 	logger = LogManager.getLogger(RegionRestController.class);

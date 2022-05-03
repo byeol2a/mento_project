@@ -15,7 +15,6 @@ public class MemberReCreateDTO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer no;
-	private String id;
 	private String pass;
 	private String name;
 	private String email;
@@ -25,20 +24,20 @@ public class MemberReCreateDTO {
 	private String active_yn;
 	private Integer permission;
 	private Integer auth;
-	
+	private String authkey;
 		
+	public String getAuthkey() {
+		return authkey;
+	}
+	public void setAuthkey(String authkey) {
+		this.authkey = authkey;
+	}
 	public Integer getNo() {
 		return no;
 	}	
 	public void setNo(Integer no) {
 		this.no = no;
 	}	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getPass() {
 		return pass;
 	}
@@ -97,7 +96,6 @@ public class MemberReCreateDTO {
 	public String toString() {
 		return "MemberReCreateDTO{" +
 	           "no=" + no +
-	           ", id='" + id + '\'' +
 	           ", pass='" + pass + '\'' +
 	           ", name='" + name + '\'' +
 	           ", email='" + email + '\'' +
@@ -107,6 +105,7 @@ public class MemberReCreateDTO {
 	           ", active_yn='" + active_yn + '\'' +
 	           ", permission='" + permission + '\'' + 	           
 	           ", auth='" + auth + '\'' +
+	           ", authkey='" + authkey + '\'' +
 	           '}';
 	}
 }
